@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 
-export default class MuseumImgBanner extends Component {
+export default class App extends Component {
 
   state = {
     currentValue: '',
@@ -14,7 +14,7 @@ export default class MuseumImgBanner extends Component {
     this.getRenderValue();
     setInterval(() => {
       window.location.reload();
-    }, 900000);
+    }, 900000); 
   }
 
   getRenderValue = () => {
@@ -25,7 +25,8 @@ export default class MuseumImgBanner extends Component {
         this.setState({
           currentValue: data.EUR.last,
           curTime : new Date().toLocaleString()
-        })    
+        })
+        localStorage.setItem('currentValue', this.state.currentValue)
         console.log(data)
       })
       .catch((err) => {
@@ -40,12 +41,16 @@ export default class MuseumImgBanner extends Component {
   render() {
     const {error, currentValue, curTime} = this.state;
     const realValue = (error === '') ? currentValue : error;
+    const prevValue = localStorage.getItem('currentValue')
     return (
       <div className="App">
           <h1>
             Bitcoin price
           </h1>
           {`${realValue} €`}
+          <p>
+          {`Difference respect previous value: ${[(realValue - prevValue) / prevValue ] * 100} %`}
+          </p>
           <p>
           {`Last update: ${curTime}`}
           </p>
