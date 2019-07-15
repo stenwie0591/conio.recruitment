@@ -6,6 +6,7 @@ export default class MuseumImgBanner extends Component {
   state = {
     currentValue: '',
     error: '',
+    curTime:'',
   }
 
 
@@ -13,7 +14,7 @@ export default class MuseumImgBanner extends Component {
     this.getRenderValue();
     setInterval(() => {
       window.location.reload();
-    }, 15000); 
+    }, 900000);
   }
 
   getRenderValue = () => {
@@ -23,29 +24,31 @@ export default class MuseumImgBanner extends Component {
         // you can access your data here
         this.setState({
           currentValue: data.EUR.last,
+          curTime : new Date().toLocaleString()
         })    
         console.log(data)
       })
       .catch((err) => {
         this.setState({
-          error: 'Bitcoin value parsing failed', err,
+          error: 'Unable to load Price', err,
         })  
-        console.log('Bitcoin value parsing failed', err);
+        console.log('Unable to load Price', err);
       });
   };
   
 
   render() {
-    const {error, currentValue} = this.state;
+    const {error, currentValue, curTime} = this.state;
     const realValue = (error === '') ? currentValue : error;
     return (
       <div className="App">
-        <header className="App-header">
           <h1>
             Bitcoin price
           </h1>
-          {`${realValue}€`}
-        </header>
+          {`${realValue} €`}
+          <p>
+          {`Last update: ${curTime}`}
+          </p>
       </div>
     )
   }
