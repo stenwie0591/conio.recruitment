@@ -1,38 +1,47 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 export default class MuseumImgBanner extends Component {
 
-  componentDidMount() {
-        fetch("https://blockchain.info/it/ticker")
-        .then(response => response.json())
-        .then(data => {
-            // you can access your data here
-            console.log(data)
-          })
-          .catch((err) => {
-            console.log('Geolocation parsing failed', err);
-          });
-      }
+  state = {
+    currentValue: '',
+    error: '',
+  }
 
+
+  componentDidMount() {
+    this.getRenderValue();
+  }
+
+  getRenderValue = () => {
+    fetch("https://blockchain.info/it/ticker")
+    .then(response => response.json())
+    .then(data => {
+        // you can access your data here
+        this.setState({
+          currentValue: data.EUR.last,
+        })    
+        console.log(data)
+      })
+      .catch((err) => {
+        this.setState({
+          error: 'Bitcoin value parsing failed', err,
+        })  
+        console.log('Bitcoin value parsing failed', err);
+      });
+  };
+  
 
   render() {
+    const {error, currentValue} = this.state;
+    const realValue = (error === '') ? currentValue : error;
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
+          <h1>
+            Bitcoin price
+          </h1>
+          {`${realValue}€`}
         </header>
       </div>
     )
