@@ -11,6 +11,9 @@ export default class MuseumImgBanner extends Component {
 
   componentDidMount() {
     this.getRenderValue();
+    setInterval(() => {
+      window.location.reload();
+    }, 15000); 
   }
 
   getRenderValue = () => {
