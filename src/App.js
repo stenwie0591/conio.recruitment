@@ -50,6 +50,7 @@ export default class App extends Component {
     const prevValue = localStorage.getItem('currentValue')
     const lastUpdate = (error === '') ? curTime : '-';
     const loading = (loader === true) ? <Spinner /> : null;
+    const percentage = ([(realValue - prevValue) / prevValue ] * 100).toFixed(4);
     return (
       <Wrapper>
           <h1>
@@ -59,7 +60,7 @@ export default class App extends Component {
           {`${realValue} €`}
           </h2>
           <h5>
-          {loader ? loading : `${[(realValue - prevValue) / prevValue ] * 100}% since last visit`}
+          {loader ? loading : `${percentage}% since last visit`}
           </h5>
           <hr></hr>
           <h6>
