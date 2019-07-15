@@ -42,6 +42,7 @@ export default class App extends Component {
     const {error, currentValue, curTime} = this.state;
     const realValue = (error === '') ? currentValue : error;
     const prevValue = localStorage.getItem('currentValue')
+    const lastUpdate = (error === '') ? curTime : '-';
     return (
       <div className="App">
           <h1>
@@ -52,7 +53,7 @@ export default class App extends Component {
           {`Difference respect previous value: ${[(realValue - prevValue) / prevValue ] * 100} %`}
           </p>
           <p>
-          {`Last update: ${curTime}`}
+          {`Last update: ${lastUpdate}`}
           </p>
       </div>
     )
