@@ -1,26 +1,40 @@
-import styled, { keyframes } from "styled-components";
-
-const rotate360 = keyframes`
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-`;
+import styled from 'styled-components';
 
 const Wrapper = styled.div`
-  animation: ${rotate360} 1s linear infinite;
-  transform: translateZ(0);
-  
-  border-top: 2px solid grey;
-  border-right: 2px solid grey;
-  border-bottom: 2px solid grey;
-  border-left: 4px solid black;
-  background: transparent;
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
+  position: relative;
+  padding: 0 80px;
+
+  p {
+    margin: 0;
+    color: #3B3B3B;
+  }
+
+  h6 {
+    margin: 0;
+    color: #3B3B3B;
+    font-weight: normal;
+    font-size: 15px;
+  }
+
+  h1 {
+    color: red;
+    font-style: italic;
+    font-weight: normal;
+    text-transform: uppercase;
+    margin: 0 0 20px 0;
+  }
+
+  h2 {
+    font-weight: bold;
+    margin: 0 0 20px 0;
+  }
+
+  h5 {
+    font-weight: normal;
+    font-size: 20px;
+    margin: 0 0 20px 0;
+  }
+
 `;
 
-export default Wrapper;
+export default (Wrapper);

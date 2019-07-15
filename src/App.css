@@ -1,9 +1,18 @@
 .App {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  /* align-items: center;
-  justify-content: center; */
-  font-size: calc(10px + 2vmin);
-  color: black;
+  position: relative;
+  padding: 0 80px;
 }
+
+.p {
+    margin: 0;
+  }
+
+.h1 {
+    line-height: 34px;
+    font-family: Times;
+    font-style: italic;
+    font-weight: normal;
+    text-transform: uppercase;
+    margin: 0 0 20px 0;
+  }
+

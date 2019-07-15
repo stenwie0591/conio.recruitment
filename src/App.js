@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import Spinner from './Spinner';
 import Wrapper from './Wrapper';
 
 export default class App extends Component {
@@ -48,21 +49,24 @@ export default class App extends Component {
     const realValue = (error === '') ? currentValue : error;
     const prevValue = localStorage.getItem('currentValue')
     const lastUpdate = (error === '') ? curTime : '-';
-    const loading = (loader === true) ? <Wrapper /> : null;
+    const loading = (loader === true) ? <Spinner /> : null;
     return (
-      <div className="App">
+      <Wrapper>
           <h1>
             Bitcoin price
           </h1>
+          <h2>
           {`${realValue} €`}
+          </h2>
           {loading}
-          <p>
+          <h5>
           {loader === false ? `Difference respect previous value: ${[(realValue - prevValue) / prevValue ] * 100} %` : null}
-          </p>
-          <p>
+          </h5>
+          <hr></hr>
+          <h6>
           {`Last update: ${lastUpdate}`}
-          </p>
-      </div>
+          </h6>
+      </Wrapper>
     )
   }
 }
