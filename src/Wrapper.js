@@ -30,7 +30,7 @@ const Wrapper = styled.div`
   }
 
   h5 {
-    font-weight: normal;
+    font-weight: bold;
     font-size: 20px;
     margin: 0 0 20px 0;
   }

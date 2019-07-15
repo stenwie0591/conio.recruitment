@@ -58,9 +58,8 @@ export default class App extends Component {
           <h2>
           {`${realValue} €`}
           </h2>
-          {loading}
           <h5>
-          {loader === false ? `Difference respect previous value: ${[(realValue - prevValue) / prevValue ] * 100} %` : null}
+          {loader ? loading : `${[(realValue - prevValue) / prevValue ] * 100}% since last visit`}
           </h5>
           <hr></hr>
           <h6>
