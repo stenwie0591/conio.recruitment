@@ -12,11 +12,13 @@ export default class App extends Component {
     loader: true,
   }
 
-
   componentDidMount() {
     this.getRenderValue();
+  }
+
+  componentWillUpdate() {
     setInterval(() => {
-      window.location.reload();
+      this.getRenderValue();
     }, 900000); 
   }
 
