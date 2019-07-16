@@ -49,7 +49,7 @@ export default class App extends Component {
   render() {
     const {error, currentValue, curTime, loader} = this.state;
     const realValue = (error === '') ? currentValue : error;
-    const prevValue = localStorage.getItem('currentValue')
+    const prevValue = !localStorage.getItem('currentValue') ? realValue : localStorage.getItem('currentValue')
     const lastUpdate = (error === '') ? curTime : '-';
     const loading = (loader === true) ? <Spinner /> : null;
     const percentage = ([(realValue - prevValue) / prevValue ] * 100).toFixed(4);
